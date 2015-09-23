@@ -16,10 +16,16 @@ namespace FluentCaptcha.Demo
 
         public void ProcessRequest(HttpContext context)
         {
-            ICapatcha capatch = new Minho.FluentCaptcha.FluentCaptcha();
-            using (var b = capatch.DrawImage())
+            CaptchaOptions options = new CaptchaOptions();
+            options.GaussianDeviation = 0.4;
+            using (ICapatcha capatch = new Minho.FluentCaptcha.FluentCaptcha())
             {
-                b.Bitmap.Save(context.Response.OutputStream, ImageFormat.Gif);
+                capatch.Options = options;
+                CaptchaResult captchaResult = capatch.DrawBackgroud().DrawLine().DrawText().Atomized().DrawBroder().DrawImage();
+                using (captchaResult)
+                {
+                    captchaResult.Bitmap.Save(context.Response.OutputStream, ImageFormat.Gif);
+                }
             }
             context.Response.Cache.SetNoStore();
             context.Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);

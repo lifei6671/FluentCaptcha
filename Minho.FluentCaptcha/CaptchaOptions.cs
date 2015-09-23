@@ -18,12 +18,22 @@ namespace Minho.FluentCaptcha
             FontWarp = NoiseLevel.Low;;
             Colors = new CaptchaColor();
             Line = NoiseLevel.Medium;
-            BroderColor = Color.FromArgb(128,128,128);
+            Broder = new CaptchaBorder
+            {
+                Color = Color.FromArgb(128, 128, 128),
+                Style = BorderStyle.RoundRectangle,
+                Radius = 2
+            };
+            GaussianDeviation = 0.66;
         }
+        /// <summary>
+        /// 图片高斯模糊的阀值,默认为 0
+        /// </summary>
+        public double GaussianDeviation { set; get; }
         /// <summary>
         /// 是否显示边框
         /// </summary>
-        public Color BroderColor { set; get; }
+        public CaptchaBorder Broder { set; get; }
         /// <summary>
         /// 字体间距级别
         /// </summary>
