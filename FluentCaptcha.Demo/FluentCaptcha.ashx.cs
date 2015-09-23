@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
 using Minho.FluentCaptcha;
@@ -16,8 +17,11 @@ namespace FluentCaptcha.Demo
 
         public void ProcessRequest(HttpContext context)
         {
-            CaptchaOptions options = new CaptchaOptions();
-            options.GaussianDeviation = 0.4;
+            
+            CaptchaOptions options = new CaptchaOptions
+            {
+                GaussianDeviation = 0.4
+            };
             using (ICapatcha capatch = new Minho.FluentCaptcha.FluentCaptcha())
             {
                 capatch.Options = options;
@@ -27,6 +31,8 @@ namespace FluentCaptcha.Demo
                     captchaResult.Bitmap.Save(context.Response.OutputStream, ImageFormat.Gif);
                 }
             }
+
+           
             context.Response.Cache.SetNoStore();
             context.Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
 

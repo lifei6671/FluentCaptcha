@@ -86,12 +86,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="WebFormCaptcha.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FluentCaptcha.ashx.cs">
       <DependentUpon>FluentCaptcha.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="FluentCaptchaController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebFormCaptcha.aspx.cs">
@@ -112,9 +117,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Start\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Minho.FluentCaptcha\Minho.FluentCaptcha.csproj">
       <Project>{e3aa532b-bed3-4980-bd5c-a0c93eaf0655}</Project>

@@ -11,6 +11,7 @@
     <form id="form1" runat="server">
     <div>
     <img src="FluentCaptcha.ashx"/>
+        <img src="http://localhost:7006/FluentCaptcha/FluentCaptcha"/>
     </div>
     </form>
 </body>
